@@ -34,6 +34,10 @@ public:
         this->next_=next;
     }
 
+    LinkedListElement<T>* getNextElement() const{
+        return this->next_;
+    }
+
 };
 
 

@@ -25,7 +25,6 @@ private:
     }
 
     void increaseSize(int capacity){
-
         int new_capacity=this->capacity_;
         do {
             new_capacity =new_capacity*3/2+1;
