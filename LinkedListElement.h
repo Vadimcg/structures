@@ -2,6 +2,7 @@
 // Created by vadimcg on 31.10.16.
 //
 
+
 #import <memory>
 
 #ifndef STRUCTURES_LINKEDLISTELEMENT_H
