@@ -3,7 +3,7 @@
 #include "LinkedList.h"
 
 int main() {
-    std::cout << "Test vector:" << std::endl;
+    std::cout << "Test linkedList:" << std::endl;
 
     LinkedList<int> linkedList;
 
@@ -12,17 +12,23 @@ int main() {
     linkedList.pushFront(3);
     linkedList.pushFront(4);
 
-    std::cout << "Size:"<<linkedList.getSize() << std::endl;
 
-    linkedList.erase(0);
+
 
     std::cout << "Size:"<<linkedList.getSize() << std::endl;
 
 
     for(int i=0;i<linkedList.getSize();i++){
-        std::cout << "Value:"<<linkedList.valueAt(i)<< std::endl;
+        std::cout << "ValueAt("<<i<<")"
+                  <<linkedList.valueAt(i)<< std::endl;
     }
 
+
+    linkedList.reverse();
+    for(int i=0;i<linkedList.getSize();i++){
+        std::cout << "ValueAt("<<i<<")"
+                  <<linkedList.valueAt(i)<< std::endl;
+    }
 
    /* DVector<std::string> vector;
 

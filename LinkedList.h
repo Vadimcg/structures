@@ -111,16 +111,75 @@ public:
             exit(EXIT_FAILURE);
         }
 
-        if(current->getNextElement()){
-            prev->setNextElement(current->getNextElement());
-        }else
-            prev->setNextElement(nullptr);
+        if(prev){
+            if(current->getNextElement()){
+                prev->setNextElement(current->getNextElement());
+            }else
+                prev->setNextElement(nullptr);
 
+        } else{
 
-        this->head_=prev;
+            if(current->getNextElement())
+                this->head_=current->getNextElement();
+            else {
+                delete this->head_;
+                this->head_= nullptr;
+
+                return;
+            }
+
+        }
+
         delete current;
-
     }
+
+    void insert(int index,const T& data){
+
+        auto current=head_;
+        LinkedListElement<T>* backElement= nullptr;
+
+        for(int i=0;current && i<index;i++){
+            backElement=current;
+            current=current->getNextElement();
+        }
+
+        if (current == nullptr) {
+            std::cerr << "Index out of bounds." << std::endl;
+            exit(EXIT_FAILURE);
+        }
+
+
+        LinkedListElement<T>* newListElement=new LinkedListElement<T>(data);
+        newListElement->setNextElement(current);
+
+        if(backElement)
+            backElement->setNextElement(newListElement);
+        else
+            head_=newListElement;
+    }
+
+
+    void reverse(){
+
+        if (head_ == nullptr) {
+            std::cerr << "List is empty" << std::endl;
+            exit(EXIT_FAILURE);
+        }
+
+        LinkedListElement<T>* currentElement=head_;
+        LinkedListElement<T>* backElement= nullptr;
+        LinkedListElement<T>* nextElement= nullptr;
+
+        while(currentElement){
+            nextElement=currentElement->getNextElement();
+            currentElement->setNextElement(backElement);
+            backElement=currentElement;
+            currentElement=nextElement;
+        }
+
+        head_=backElement;
+    }
+
 
 
 
