@@ -197,6 +197,41 @@ public:
         return retValue;
     }
 
+    const T& popBack(){
+
+        if (head_ == nullptr) {
+            std::cerr << "List is empty" << std::endl;
+            exit(EXIT_FAILURE);
+        }
+
+        auto backElement=head_;
+        LinkedListElement<T>* prevBackElement= nullptr;
+
+        T retValue;
+
+        while(backElement->getNextElement()) {
+            prevBackElement=backElement;
+            backElement = backElement->getNextElement();
+        }
+
+        if(prevBackElement)
+            prevBackElement->setNextElement(nullptr);
+        else
+            head_= nullptr;
+
+        retValue=backElement->getData();
+        delete backElement;
+
+        return retValue;
+
+
+
+
+
+
+
+    }
+
 
 };
 

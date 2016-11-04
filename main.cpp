@@ -32,7 +32,7 @@ int main() {
 
     std::cout << "------------"<< std::endl;
 
-    int bb=linkedList.popFront();
+    int bb=linkedList.popBack();
     bb++;
 
     std::cout << bb<< std::endl;
