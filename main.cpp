@@ -30,6 +30,18 @@ int main() {
                   <<linkedList.valueAt(i)<< std::endl;
     }
 
+    std::cout << "------------"<< std::endl;
+
+    int bb=linkedList.popFront();
+    bb++;
+
+    std::cout << bb<< std::endl;
+
+    for(int i=0;i<linkedList.getSize();i++){
+        std::cout << "ValueAt("<<i<<")"
+                  <<linkedList.valueAt(i)<< std::endl;
+    }
+
    /* DVector<std::string> vector;
 
     vector.push("a1");

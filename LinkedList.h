@@ -1,6 +1,4 @@
-//
-// Created by vadimcg on 31.10.16.
-//
+
 
 #import <iostream>
 #include "LinkedListElement.h"
@@ -181,9 +179,23 @@ public:
     }
 
 
+    const T& popFront() {
 
+        if (head_ == nullptr) {
+            std::cerr << "List is empty" << std::endl;
+            exit(EXIT_FAILURE);
+        }
 
+        auto lastHead=head_;
+        T retValue = head_->getData();
 
+        if (head_->getNextElement())
+            head_ = head_->getNextElement();
+
+        delete lastHead;
+
+        return retValue;
+    }
 
 
 };
