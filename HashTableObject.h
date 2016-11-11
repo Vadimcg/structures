@@ -13,16 +13,30 @@ private:
     F value_;
 
 public:
-    HashTableObject();
-    HashTableObject(HashTableObject * hashTableObject);
+    HashTableObject(){
+    }
 
-    ~HashTableObject();
+    HashTableObject(HashTableObject * hashTableObject){
+        this->key_=hashTableObject->key_;
+        this->value_=hashTableObject->value_;
+    }
 
-    T& getKey() const;
-    void setKey(const T& key);
+    ~HashTableObject(){
+    }
 
-    F& getValue() const;
-    void setValue(const F& value);
+    T& getKey() const{
+        return this->key_;
+    }
+    void setKey(const T& key){
+        this->key_=key;
+    }
+
+    F& getValue() const{
+        return this->value_;
+    }
+    void setValue(const F& value){
+        this->value_=value;
+    }
 
 };
 
