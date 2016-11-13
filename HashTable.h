@@ -2,36 +2,23 @@
 // Created by vadimcg on 11.11.16.
 //
 
-#import <iostream>
-#include <typeinfo.h>
-#import "HashTableObject.h"
+#include <iostream>
+#include "HashKeyObject.h"
+#include "HashTableObject.h"
 
 #ifndef STRUCTURES_HASHTABLE_H
 #define STRUCTURES_HASHTABLE_H
 
-template<class T,class F>
+template<class HashKeyObject,class F>
 class HashTable {
 
 private:
 
-    HashTableObject* objects;
+    HashTableObject<F>* objects_;
     int size_;
 
-    unsigned int makeHash(T key){
-
-        unsigned int hash = 0;
-
-        for (; *key; key++)
-        {
-            hash += (unsigned char)(*key);
-            hash += (hash << 10);
-            hash ^= (hash >> 6);
-        }
-        hash += (hash << 3);
-        hash ^= (hash >> 11);
-        hash += (hash << 15);
-
-        return hash;
+    int getIndex(int hash){
+        return abs(hash%size_);
     }
 
 public:
@@ -43,26 +30,22 @@ public:
         }
 
         this->size_=size;
-        this->objects=new HashTableObject[size];
+        this->objects_=new HashTableObject<F>[size];
+
+        for(int i=0;i<this->size_;i++){
+            this->objects_[i].setKey(nullptr);
+        }
+    }
+
+    void add(HashTableObject* object){
+        int index=this->getIndex(object->getKey().hash());
+
     }
 
 
     ~HashTable(){
-        delete[] objects;
+        delete[] objects_;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 };
 

@@ -5,11 +5,11 @@
 #ifndef STRUCTURES_HASHTABLEOBJECT_H
 #define STRUCTURES_HASHTABLEOBJECT_H
 
-template<class T,class F>
+template<class F>
 class HashTableObject {
 
 private:
-    T key_;
+    HashKeyObject key_;
     F value_;
 
 public:
@@ -24,10 +24,10 @@ public:
     ~HashTableObject(){
     }
 
-    T& getKey() const{
+    HashKeyObject& getKey() const{
         return this->key_;
     }
-    void setKey(const T& key){
+    void setKey(const HashKeyObject& key){
         this->key_=key;
     }
 

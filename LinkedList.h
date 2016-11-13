@@ -1,6 +1,6 @@
 
 
-#import <iostream>
+#include <iostream>
 #include "LinkedListElement.h"
 
 #ifndef STRUCTURES_LINKEDLIST_H
