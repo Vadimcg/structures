@@ -10,4 +10,9 @@
 class   HashKeyObject{
 public:
     virtual int hash()=0;
+
+
+    bool  operator== (HashKeyObject  &a){
+        return this->hash()==a.hash();
+    }
 };

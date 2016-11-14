@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include "LinkedList.h"
 #include "HashKeyObject.h"
 #include "HashTableObject.h"
 
@@ -14,12 +15,17 @@ class HashTable {
 
 private:
 
-    HashTableObject<F>* objects_;
+    LinkedList<HashTableObject<F>> * objects_;
     int size_;
 
     int getIndex(int hash){
         return abs(hash%size_);
     }
+
+    void addWithNullKey(HashTableObject<F>* object){
+
+    }
+
 
 public:
     explicit HashTable(int size){
@@ -30,16 +36,29 @@ public:
         }
 
         this->size_=size;
-        this->objects_=new HashTableObject<F>[size];
-
-        for(int i=0;i<this->size_;i++){
-            this->objects_[i].setKey(nullptr);
-        }
+        this->objects_=new LinkedList<HashTableObject<F>>[size];
     }
 
-    void add(HashTableObject* object){
+    void add(HashTableObject<F>* object){
+
+        if(object->getKey()== nullptr){
+            this->addWithNullKey(object);
+            return;
+        }
+
         int index=this->getIndex(object->getKey().hash());
 
+        LinkedList<HashTableObject<F>>& list=this->objects_[index];
+
+        for(int i=0;i<list.getSize();i++){
+            if(list.valueAt(i).getKey()==object->getKey()){
+               //if we found the same key, change value
+               list.valueAt(i).setValue(object->getValue());
+               return;
+            }
+        }
+
+        list.pushFront(object);
     }
 
 
