@@ -41,7 +41,7 @@ public:
 
     void add(HashTableObject<F>* object){
 
-        if(object->getKey()== nullptr){
+        if(object->getKey().isEmpty()){
             this->addWithNullKey(object);
             return;
         }
