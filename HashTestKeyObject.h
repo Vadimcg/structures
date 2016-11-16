@@ -10,10 +10,6 @@
 
 class HashTestKeyObject :public HashKeyObject{
 
-private:
-     int key_;
-
-
 public:
     HashTestKeyObject();
 

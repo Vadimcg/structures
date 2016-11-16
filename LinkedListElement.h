@@ -19,7 +19,7 @@ public:
     LinkedListElement(const T& data):next_(nullptr),data_(data){}
     ~LinkedListElement(){}
 
-    const T& getData() const {
+    T& getData() {
         return this->data_;
     }
 

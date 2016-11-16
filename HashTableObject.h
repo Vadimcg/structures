@@ -9,7 +9,7 @@ template<class F>
 class HashTableObject {
 
 private:
-    HashKeyObject key_;
+    HashKeyObject* key_;
     F value_;
 
 public:
@@ -22,16 +22,17 @@ public:
     }
 
     ~HashTableObject(){
+        delete key_;
     }
 
-    HashKeyObject& getKey() const{
+    HashKeyObject* getKey(){
         return this->key_;
     }
-    void setKey(const HashKeyObject& key){
+    void setKey(HashKeyObject* key){
         this->key_=key;
     }
 
-    F& getValue() const{
+    F& getValue(){
         return this->value_;
     }
     void setValue(const F& value){

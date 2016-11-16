@@ -15,7 +15,7 @@ class HashTable {
 
 private:
 
-    LinkedList<HashTableObject<F>> * objects_;
+    LinkedList<HashTableObject<F>*> * objects_;
     int size_;
 
     int getIndex(int hash){
@@ -36,29 +36,50 @@ public:
         }
 
         this->size_=size;
-        this->objects_=new LinkedList<HashTableObject<F>>[size];
+        this->objects_=new LinkedList<HashTableObject<F>*>[size];
     }
 
     void add(HashTableObject<F>* object){
 
-        if(object->getKey().isEmpty()){
+        if(object->getKey()->isEmpty()){
             this->addWithNullKey(object);
             return;
         }
 
-        int index=this->getIndex(object->getKey().hash());
+        int index=this->getIndex(object->getKey()->hash());
 
-        LinkedList<HashTableObject<F>>& list=this->objects_[index];
+        LinkedList<HashTableObject<F>*> list=this->objects_[index];
 
         for(int i=0;i<list.getSize();i++){
-            if(list.valueAt(i).getKey()==object->getKey()){
+            if(list.valueAt(i)->getKey()==object->getKey()){
                //if we found the same key, change value
-               list.valueAt(i).setValue(object->getValue());
+               list.valueAt(i)->setValue(object->getValue());
                return;
             }
         }
 
         list.pushFront(object);
+    }
+
+    HashTableObject<F> get(HashKeyObject* object){
+
+        if(this->size_<=0){
+            std::cout << "Hashtable is empty!" << std::endl;
+            exit(EXIT_FAILURE);
+        }
+
+        int index=this->getIndex(object->hash());
+
+        LinkedList<HashTableObject<F>*> list=this->objects_[index];
+
+        for(int i=0;i<list.getSize();i++){
+            if(list.valueAt(i)->getKey()->getKey()==object->getKey()){
+                //if we found the same key, change value
+                return list.valueAt(i);
+            }
+        }
+
+        return nullptr;
     }
 
 
