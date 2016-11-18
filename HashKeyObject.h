@@ -10,9 +10,6 @@
  */
 class   HashKeyObject{
 
-protected:
-    int key_;
-
 public:
     virtual int hash()=0;
 
@@ -20,11 +17,12 @@ public:
         return this->hash()==a.hash();
     }
 
+    bool  operator== (HashKeyObject*  a){
+        return this->hash()==a->hash();
+    }
+
     virtual bool  isEmpty()=0;
 
-    int getKey() const{
-        return key_;
-    }
 
 
 };

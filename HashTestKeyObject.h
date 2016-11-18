@@ -10,6 +10,9 @@
 
 class HashTestKeyObject :public HashKeyObject{
 
+protected:
+    int key_;
+
 public:
     HashTestKeyObject();
 

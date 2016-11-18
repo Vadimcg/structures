@@ -48,10 +48,11 @@ public:
 
         int index=this->getIndex(object->getKey()->hash());
 
-        LinkedList<HashTableObject<F>*> list=this->objects_[index];
+        LinkedList<HashTableObject<F>*> &list=this->objects_[index];
 
         for(int i=0;i<list.getSize();i++){
-            if(list.valueAt(i)->getKey()==object->getKey()){
+
+            if(*(list.valueAt(i)->getKey())==object->getKey()){
                //if we found the same key, change value
                list.valueAt(i)->setValue(object->getValue());
                return;
@@ -61,7 +62,7 @@ public:
         list.pushFront(object);
     }
 
-    HashTableObject<F> get(HashKeyObject* object){
+    HashTableObject<F>* get(HashKeyObject* object){
 
         if(this->size_<=0){
             std::cout << "Hashtable is empty!" << std::endl;
@@ -70,10 +71,10 @@ public:
 
         int index=this->getIndex(object->hash());
 
-        LinkedList<HashTableObject<F>*> list=this->objects_[index];
+        LinkedList<HashTableObject<F>*> &list=this->objects_[index];
 
         for(int i=0;i<list.getSize();i++){
-            if(list.valueAt(i)->getKey()->getKey()==object->getKey()){
+            if(*(list.valueAt(i)->getKey())==object){
                 //if we found the same key, change value
                 return list.valueAt(i);
             }

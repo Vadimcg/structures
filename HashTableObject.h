@@ -28,6 +28,8 @@ public:
     HashKeyObject* getKey(){
         return this->key_;
     }
+
+
     void setKey(HashKeyObject* key){
         this->key_=key;
     }

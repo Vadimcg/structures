@@ -33,9 +33,9 @@ int main() {
     hashTable.add(hashTableObject2);
     hashTable.add(hashTableObject3);
 
-    HashTableObject<std::string> mm=hashTable.get(key3);
-
-
+    std::cerr << "Key2 value:" <<hashTable.get(key1)->getValue()<< std::endl;
+    std::cerr << "Key2 value:" <<hashTable.get(key2)->getValue()<< std::endl;
+    std::cerr << "Key3 value:" <<hashTable.get(key2)->getValue()<< std::endl;
 
     return 0;
 }
