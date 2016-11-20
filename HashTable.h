@@ -64,11 +64,6 @@ public:
 
     HashTableObject<F>* get(HashKeyObject* object){
 
-        if(this->size_<=0){
-            std::cout << "Hashtable is empty!" << std::endl;
-            exit(EXIT_FAILURE);
-        }
-
         int index=this->getIndex(object->hash());
 
         LinkedList<HashTableObject<F>*> &list=this->objects_[index];
@@ -81,6 +76,42 @@ public:
         }
 
         return nullptr;
+    }
+
+
+    bool isEmpty(){
+        for(int i=0;i<size_;i++){
+            LinkedList<HashTableObject<F>*> &list=this->objects_[i];
+
+            if(!list.isEmpty())
+                return false;
+        }
+
+        return true;
+    }
+
+
+    bool remove(HashKeyObject* object){
+        int index=this->getIndex(object->hash());
+
+        LinkedList<HashTableObject<F>*> &list=this->objects_[index];
+
+        if(list.isEmpty())
+            return false;
+
+        int n=0;
+        do{
+
+            if(*(list.valueAt(n)->getKey())==object){
+                list.erase(n);
+                return true;
+            }
+
+            n++;
+
+        }while(n<list.getSize());
+
+        return false;
     }
 
 

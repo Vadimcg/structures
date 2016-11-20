@@ -29,9 +29,13 @@ int main() {
     hashTableObject3->setValue("value3");
 
 
+    std::cerr << "1.Is it empty?:" <<hashTable.isEmpty()<< std::endl;
+
     hashTable.add(hashTableObject1);
     hashTable.add(hashTableObject2);
     hashTable.add(hashTableObject3);
+
+    std::cerr << "2.Is it empty?:" <<hashTable.isEmpty()<< std::endl;
 
     std::cerr << "Key2 value:" <<hashTable.get(key1)->getValue()<< std::endl;
     std::cerr << "Key2 value:" <<hashTable.get(key2)->getValue()<< std::endl;
