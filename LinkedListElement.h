@@ -4,7 +4,7 @@
 
 
 #include <memory>
-
+#include <iostream>
 #ifndef STRUCTURES_LINKEDLISTELEMENT_H
 #define STRUCTURES_LINKEDLISTELEMENT_H
 
@@ -17,7 +17,12 @@ private:
 
 public:
     LinkedListElement(const T& data):next_(nullptr),data_(data){}
-    ~LinkedListElement(){}
+    ~LinkedListElement(){
+        std::cerr << "Element with value:"
+                  <<data_<<" was deleted" << std::endl;
+
+        delete next_;
+    }
 
     T& getData() {
         return this->data_;

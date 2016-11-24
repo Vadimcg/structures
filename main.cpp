@@ -9,6 +9,11 @@ int main() {
     std::cout << "Test linkedList:" << std::endl;
 
 
+    LinkedList<std::string> list;
+    list.pushFront("1");
+    list.pushFront("2");
+    list.pushFront("3");
+
     HashTable<HashTestKeyObject,std::string> hashTable=HashTable<HashTestKeyObject,std::string>(10);
 
     HashTestKeyObject* key1=new HashTestKeyObject(5);
