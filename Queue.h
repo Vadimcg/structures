@@ -56,13 +56,16 @@ public:
     }
 
 
-
     ~Queue(){
         delete[] queuePointer_;
     }
 
+    int getAmount(){
+        return this->amount_;
+    }
 
-    void enqueue(T& element){
+
+    void enqueue(T element){
 
         if(amount_+1==size_)
             this->resize();

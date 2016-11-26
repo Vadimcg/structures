@@ -4,9 +4,26 @@
 #include "LinkedList.h"
 #include "HashTable.h"
 #include "HashTestKeyObject.h"
+#include "Queue.h"
 
 int main() {
     std::cout << "Test linkedList:" << std::endl;
+
+
+    Queue<int> queue;
+
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    queue.enqueue(4);
+    queue.enqueue(5);
+
+
+    std::cout << "Queue 1:" <<queue.dequeue()<< std::endl;
+    std::cout << "Queue 2:" <<queue.dequeue()<< std::endl;
+    std::cout << "Queue 3:" <<queue.dequeue()<< std::endl;
+    std::cout << "Queue 4:" <<queue.dequeue()<< std::endl;
+
 
 
     LinkedList<std::string> list;
